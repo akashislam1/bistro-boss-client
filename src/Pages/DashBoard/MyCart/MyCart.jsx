@@ -33,14 +33,14 @@ const MyCart = () => {
     });
   };
   return (
-    <div className="w-full">
+    <div className="w-full h-full mt-10">
       <Helmet>
         <title>Bistro Boss | My Cart</title>
       </Helmet>
       <div className="w-full md:w-9/12 mx-auto">
         <div className="uppercase font-semibold flex justify-between items-center mb-5">
-          <h3 className="text-2xl">Total orders: {cart.length}</h3>
-          <h3 className="text-2xl">total price: ${total}</h3>
+          <h3 className="text-xl md:text-2xl">Total orders: {cart.length}</h3>
+          <h3 className="text-xl md:text-2xl">total price: ${total}</h3>
           <button className="px-4 py-2 rounded-md text-white uppercase bg-[#D1A054]">
             pay
           </button>

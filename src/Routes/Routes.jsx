@@ -7,6 +7,7 @@ import Login from "../Pages/Login/Login";
 import SingUp from "../Pages/Login/SingUp";
 import DashBoard from "../Layouts/DashBoard";
 import MyCart from "../Pages/DashBoard/MyCart/MyCart";
+import PrivateRoute from "./PrivateRoute";
 
 const router = createBrowserRouter([
   {
@@ -37,7 +38,11 @@ const router = createBrowserRouter([
   },
   {
     path: "/dashboard",
-    element: <DashBoard></DashBoard>,
+    element: (
+      <PrivateRoute>
+        <DashBoard></DashBoard>
+      </PrivateRoute>
+    ),
     children: [
       {
         path: "mycart",

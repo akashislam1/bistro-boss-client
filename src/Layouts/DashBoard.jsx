@@ -13,20 +13,20 @@ const DashBoard = () => {
   const [cart] = useCart();
 
   return (
-    <div className="drawer drawer-mobile">
+    <div className="drawer drawer-mobile relative p-4 md:p-0">
       <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
       <div className="drawer-content flex flex-col items-center justify-center">
         <Outlet></Outlet>
         <label
           htmlFor="my-drawer-2"
-          className="btn btn-primary drawer-button lg:hidden"
+          className="btn btn-primary drawer-button lg:hidden absolute top-2 right-2"
         >
           Open drawer
         </label>
       </div>
-      <div className="drawer-side">
+      <div className="drawer-side overflow-y-auto">
         <label htmlFor="my-drawer-2" className="drawer-overlay "></label>
-        <ul className="menu p-4 w-80 bg-[#D1A054]  uppercase">
+        <ul className="menu p-4 w-80 bg-[#D1A054] uppercase">
           <li>
             <NavLink to="/dashboard/home">
               <FaHome></FaHome>User Home
