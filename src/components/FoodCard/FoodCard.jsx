@@ -33,7 +33,7 @@ const FoodCard = ({ item }) => {
               icon: "success",
               title: "Food added on the cart.",
               showConfirmButton: false,
-              timer: 1500,
+              timer: 700,
             });
           }
         });
