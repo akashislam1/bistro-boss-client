@@ -6,9 +6,12 @@ import {
   FaShoppingCart,
   FaWallet,
 } from "react-icons/fa";
-import { Link, Outlet } from "react-router-dom";
+import { NavLink, Outlet } from "react-router-dom";
+import useCart from "../Hooks/useCart";
 
 const DashBoard = () => {
+  const [cart] = useCart();
+
   return (
     <div className="drawer drawer-mobile">
       <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
@@ -23,55 +26,56 @@ const DashBoard = () => {
       </div>
       <div className="drawer-side">
         <label htmlFor="my-drawer-2" className="drawer-overlay "></label>
-        <ul className="menu p-4 w-80 bg-[#D1A054] text-base-content uppercase">
+        <ul className="menu p-4 w-80 bg-[#D1A054]  uppercase">
           <li>
-            <Link>
+            <NavLink to="/dashboard/home">
               <FaHome></FaHome>User Home
-            </Link>
+            </NavLink>
           </li>
           <li>
-            <Link>
+            <NavLink to="/dashboard/reservation">
               <FaCalendarAlt className="inline-block"></FaCalendarAlt>
               reservation
-            </Link>
+            </NavLink>
           </li>
           <li>
-            <Link>
+            <NavLink to="/dashboard/history">
               <FaWallet className="inline-block"></FaWallet> Payment History
-            </Link>
+            </NavLink>
           </li>
           <li>
-            <Link to="/dashboard/mycart">
+            <NavLink to="/dashboard/mycart">
               <FaShoppingCart className="inline-block"></FaShoppingCart> My Cart
-            </Link>
+              <div className="badge badge-secondary">+{cart?.length || 0}</div>
+            </NavLink>
           </li>
           <li>
-            <Link>add review</Link>
+            <NavLink to="/dashboard/review">add review</NavLink>
           </li>
           <li>
-            <Link>my booking</Link>
+            <NavLink to="/dashboard/booking">my booking</NavLink>
           </li>
           <div className="divider "></div>
           <li>
-            <Link to="/">
+            <NavLink to="/">
               <FaHome></FaHome> Home
-            </Link>
+            </NavLink>
           </li>
           <li>
-            <Link to="/menu">
+            <NavLink to="/menu">
               <FaBars></FaBars> Menu
-            </Link>
+            </NavLink>
           </li>
           <li>
-            <Link to="/order/salad">
+            <NavLink to="/order/salad">
               <FaShoppingBag></FaShoppingBag> Shop
-            </Link>
+            </NavLink>
           </li>
-          <li>
-            <Link>
-              <FaHome></FaHome> Contact
-            </Link>
-          </li>
+          {/* <li>
+            <NavLink>
+              <FaHome to="/contact"></FaHome> Contact
+            </NavLink>
+          </li> */}
         </ul>
       </div>
     </div>
