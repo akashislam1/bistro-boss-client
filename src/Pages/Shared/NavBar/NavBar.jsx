@@ -9,11 +9,7 @@ const NavBar = () => {
   const [cart] = useCart();
 
   const handleLogout = () => {
-    logOut()
-      .then(() => {})
-      .catch(() => {
-        console.error("Sign out");
-      });
+    logOut();
   };
   const navItems = (
     <>
