@@ -7,7 +7,7 @@ import SocialLogin from "./SocialLogin";
 import { Helmet } from "react-helmet-async";
 const SingUp = () => {
   const [error, setError] = useState("");
-  const { setUser, createUser, updateUserProfile } = useContext(AuthContext);
+  const { createUser, updateUserProfile } = useContext(AuthContext);
   const navigate = useNavigate();
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -15,18 +15,30 @@ const SingUp = () => {
     const name = form.name.value;
     const email = form.email.value;
     const password = form.password.value;
-    // console.log(email, password, name);
+    const photoUrl = form.photoUrl.value;
+    // console.log(email, password, name, photoUrl);
     createUser(email, password)
       .then((result) => {
         const signedUpUser = result.user;
-        // update user name
-        updateUserProfile(signedUpUser, name)
-          .then(() => {})
+        // update user profile
+        updateUserProfile(signedUpUser, name, photoUrl)
+          .then(() => {
+            const saveUser = { name: name, email: email };
+            fetch("http://localhost:5000/users", {
+              method: "POST",
+              headers: { "content-type": "application/json" },
+              body: JSON.stringify(saveUser),
+            })
+              .then((res) => res.json())
+              .then((data) => {
+                console.log(data);
+              });
+          })
           .catch((err) => {
             setError(err.message);
           });
-        setUser(signedUpUser);
-        navigate("/login");
+
+        navigate("/");
         e.target.reset();
         setError("");
       })
@@ -101,6 +113,22 @@ const SingUp = () => {
                     name="password"
                     placeholder="Enter your password"
                     required
+                  />
+                </div>
+                <div className="mb-6">
+                  <label
+                    className="block text-gray-700 text-sm font-bold mb-2"
+                    htmlFor="password"
+                  >
+                    Photo Url
+                    <span className="font-extrabold text-red-500"> *</span>
+                  </label>
+                  <input
+                    className="w-full p-2 border border-gray-300 rounded-md focus:outline-none"
+                    type="url"
+                    id="phoroUrl"
+                    name="photoUrl"
+                    placeholder="http://example.com"
                   />
                 </div>
                 <button

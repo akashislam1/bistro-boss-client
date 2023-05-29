@@ -11,8 +11,8 @@ const NavBar = () => {
   const handleLogout = () => {
     logOut()
       .then(() => {})
-      .catch((err) => {
-        console.error(err);
+      .catch(() => {
+        console.error("Sign out");
       });
   };
   const navItems = (
