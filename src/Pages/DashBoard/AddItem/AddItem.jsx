@@ -11,6 +11,7 @@ const AddItem = () => {
     register,
     handleSubmit,
     // formState: { errors },
+    reset,
   } = useForm();
   const image_hosting_url = `https://api.imgbb.com/1/upload?key=${img_hosting_token}`;
 
@@ -38,7 +39,7 @@ const AddItem = () => {
           axiosSecure.post("/menu", newItem).then((data) => {
             console.log("after posting new menu item", data.data);
             if (data.data.insertedId) {
-              // reset();
+              reset();
               Swal.fire({
                 position: "top-end",
                 icon: "success",
