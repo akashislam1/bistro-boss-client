@@ -12,7 +12,7 @@ const AdminRoute = ({ children }) => {
   } else if (user && isAdmin) {
     return children;
   } else {
-    return <Navigate to="/login" state={{ from: location }} replace></Navigate>;
+    return <Navigate to="/" state={{ from: location }} replace></Navigate>;
   }
 };
 

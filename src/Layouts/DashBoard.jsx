@@ -43,9 +43,9 @@ const DashBoard = () => {
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/dashboard/additems">
+                <NavLink to="/dashboard/addItem">
                   <FaUtensils className="inline-block"></FaUtensils>
-                  Add Items
+                  Add an Item
                 </NavLink>
               </li>
               <li>
